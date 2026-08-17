@@ -9,7 +9,7 @@ from ann_b3 import build_ann_b3_report
 
 st.set_page_config(page_title="Stock Report Tool", page_icon="📊", layout="centered")
 
-st.title("📊 Stock Report Tool")
+st.title("Stock Report Tool")
 st.write(
     "Choose a report, upload your raw system export (.xlsx), and download the result. "
     "Large files (tens of thousands of rows) are fine — this may take up to a "
