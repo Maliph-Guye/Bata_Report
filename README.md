@@ -1,8 +1,8 @@
 # Stock Report Tool (Streamlit)
 
-A simple web app with three options — **Inputting**, **Reconciliation**, and
-**Variance Report** — for non-technical users to upload a raw stock export
-and download a finished Excel report.
+A simple web app with four options — **Inputting**, **Reconciliation**,
+**Variance Report**, and **Ann. B3** — for non-technical users to upload a
+raw stock export and download a finished Excel report.
 
 This replaces an earlier Vercel/TypeScript version, which hit a hard
 platform limit: Vercel serverless functions cap request/response payloads at
@@ -39,6 +39,17 @@ minute or two with a spinner on screen.
      (rows whose Total Retail values are exact opposites, e.g. 500 and
      -500), a blank "Reasons for Variance" column for the manager, borders,
      and a bold totals row with live `SUM()` formulas.
+- **Ann. B3** — builds the per-store Ann B3 stocktake reconciliation
+  workbook: one row per article (Code), grouped by Category (sorted 1-56),
+  with letter-suffixed size/variant codes (e.g. "10140410L") merged into
+  their base article. Only non-zero Counted articles are kept. A yellow
+  subtotal row per category shows Auditor Pairs/Value (auto-summed) with
+  Manager mirroring Auditor exactly (so Reconciliation always nets to "-"),
+  plus a grand total row and a final AUDITOR/MANAGER/RECONCILIATION summary
+  split into Footwear (FW, category < 50) and Non-Footwear (NFW, category
+  50-56). The app shows a "processing details" panel after each run listing
+  exactly what was dropped and why, since raw exports often mix junk rows
+  (gift cards, vouchers, freight) in with real stock data.
 
 ## Running locally
 
